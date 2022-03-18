@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc {
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+}
+
+
+
+</style><title>1</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><em><strong><span>*</span><span>生物复习（七上）</span><span>*</span></strong></em></p><p><span> </span></p><p><span>1、生物学是研究生命现象和生命活动规律的科学。</span></p><p><span>2、观察是科学探究的一种基本方法。调查是科学探究常用的方法之一。</span></p><p><span>3、科学观察可以直接用肉眼，也可以借助放大镜、显微镜、望远镜等仪器，或利用照相机、摄像机、录音机等工具，有时还需要测量。</span></p><p><span>4、科学观察不同于一般的观察，要有明确的目的；观察要全面、细致和实事求是，并及时记录下来；对于需要较长时间的观察，要有计划和耐心；观察时要积极思考，多问几个“为什么”。在观察的基础之上，还需要同别人交流看法，进行讨论。</span></p><p><span>5、调查时首先要明确调查的目的和调查对象，并制订合理的调查方案。有时因为调查的范围很大，不可能逐一调查，就要选取一部分调查对象作为样本。调查过程中要如实记录。对调查的结果要进行整理和分析，有时要用数学方法进行统计。</span></p><p><span>6、生物的特性：①、生物的生活需要营养。②、生物能进行呼吸。③、生物能排出身体内产生的废物。④、生物能对外界刺激作出反应。⑤、生物能生长和繁殖。⑥、生物都有遗传和变异的特性。⑦、除病毒以外，生物都是由细胞构成的。</span></p><p><span>7、地球上所有的生物与其环境的总和就叫生物圈。</span></p><p><span>8、环境中影响生物的生活和分布的因素叫做生态因素。生态因素可分为两类：非生物因素、生物因素。</span></p><p><span>9、科学探究的步骤：提出问题、作出假设、制订计划、实施计划、得出结论、表达和交流。</span></p><p><span>10、在研究一种条件对研究对象的影响时，所进行的除了这种这种条件不同以外，其他条件都相同的实验，叫做对照实验。</span></p><p><span>11、生物与生物之间，最常见的关系有：捕食关系、竞争关系、合作关系、寄生关系。</span></p><p><span>12、在自然界中，生物受到很多生态因素的影响，因此，生物必须适应环境才能生存下去。生物在适就环境的同时，也影响和改变着环境。</span></p><p><span>13、在一定的空间范围内，生物与环境所形成的统一的整体叫做生态系统。</span></p><p><span>14、植物是生态系统中的生产者。动物不能自己制造有机物，它们直接或间接地以植物为食，因而叫做消费者。细菌和真菌常常被称为生态系统中的分解者。</span></p><p><span>15、生产者、消费者和分解者之间是相互依存、相互制约的关系。</span></p><p><span>16、在生态系统中，不同生物之间由于吃与被吃的关系而形成的链状结构叫做食物链。食物链的起始环节是生产者。</span></p><p><span>17、在一个生态系统中，往往有很多条食物链，它们彼此交错连接，形成食物网。</span></p><p><span>18、生态系统中的物质和能量就是沿着食物链和食物网流动的。</span></p><p><span>19、生态系统具有一定的自动调节能力。在生态系统中，随着环境的变化，各种生物的数量也在不断的变化着，但是在一般情况下，生态系统中各种生物的数量和所占的比例是相对稳定的。这说明生态系统具有一定的自动调节能力，但这种调节能力是有一定限度的。如果外界干扰超过这个限度，生态系统就会遭到破坏。</span></p><p><span>20、生物圈的范围包括大气圈的底部、水圈的大部和岩石圈的表面。</span></p><p><span>21、多种多样的生态系统：草原生态系统、湿地生态系统（地球之肾）、海洋生态系统、森林生态系统（地球之肺）、淡水生态系统、农田生态系统、城市生态系统。</span></p><p><span>22、生物圈是一个统一的整体，是地球上最大的生态系统，是所有生物共同的家园。</span></p><p><span>23、调节显微镜的亮度，使用遮光器和反光镜。晴天或光线强用小光圈、平面镜，阴天或光线暗用大光圈、凹面镜。</span></p><p><span>24、从目镜内看到的物像是倒像。一台显微镜的目镜与物镜放大倍数的乘积就是该显微镜的放大倍数。显微镜的放大倍数越大，观察到的物像就越大，但观察的视野范围就越小。</span></p><p><span>25、使用显微镜观察植物细胞的过程：擦、滴、撕、展、盖、染</span></p><p><span>26、植物细胞结构包括：细胞壁、细胞膜、细胞核、细胞质、液泡、线粒体、叶绿体。</span></p><p><span>27、动物细胞结构包括：细胞膜、细胞质、细胞核、线粒体。但动物细胞不具有细胞壁、叶绿体、液泡。</span></p><p><span>28、细胞是构成生物体的基本单位。</span></p><p><span>29、细胞中的物质可以分为两大类：一类是分子比较小的，这类物质一般不含碳，统称为无机物，另一类分子较大，如糖类、脂质、蛋白质和核酸等复杂的物质，一般含有碳，统称为有机物。</span></p><p><span>30、细胞壁起保护和支持细胞的作用。</span></p><p><span>31、细胞膜能控制物质的进出。细胞膜有适于运输物质的结构，能够让细胞生活需要的物质进入细胞，而把有些物质挡在细胞外面。细胞在生活过程中会产生一些不需要的或有害的物质，这些物质也要通过细胞膜排出。</span></p><p><span>32、叶绿体和线粒体都是细胞中的能量转换器。</span></p><p><span>33、叶绿体可以将光能转变为化学能，并将化学能储存在它所制造的糖类等有机物中。</span></p><p><span>34、线粒体可使细胞中的一些有机物，通过复杂的变化，将其中储存的化学能释放出来，供细胞利用。</span></p><p><span>35、生物体由小长大，是与细胞的生长、分裂和分化分不开的。</span></p><p><span>36、染色体是由DNA和蛋白质两种物质组成的。DNA是遗传物质，因此可以说染色体就是遗传物质的载体。</span></p><p><span>37、在细胞分裂时，染色体会进行复制，细胞分裂过程中，染色体均分成完全相同的两份，分别进入两个新细胞中。两个新细胞的染色体形态和数目相同，新细胞与原细胞的染色体形态和数目也相同。由于染色体内有遗传物质DNA，因此，新细胞与原细胞所含的遗传物质是一样的。</span></p><p><span>38、动物和人体的发育都是从一个细胞开始的，这个细胞就是受精卵。</span></p><p><span>39、在个体发育过程中，一个或一种细胞通过分裂产生的后代，在形态、结构和生理功能上发生差异性的变化，这个过程叫做细胞分化。</span></p><p><span>40、每个细胞群都是由形态相似，结构、功能相同的细胞联合在一起形成的，这样的细胞群叫做组织。</span></p><p><span>41、人体有四种基本组织：上皮组织、肌肉组织、结缔组织、神经组织。</span></p><p><span>42、由不同的组织按一定的次序结合在一起构成的行使一定功能的结构，叫做器官。</span></p><p><span>43、能够共同完成一种或几种生理功能的多个器官按照一定的次序组合在一起，就构成了系统。</span></p><p><span>44、人体八大系统：消化系统、运动系统、呼吸系统、循环系统、泌尿系统、神经系统、内分泌系统、生殖系统。</span></p><p><span>45、绿色开花植物体通常都是由根、茎、叶、花、果实、种子六大器官组成的。根、茎、叶为营养器官，花、果实、种子为生殖器官。</span></p><p><span>46、植物体的组织包括：分生组织、保护组织、营养组织、输导组织、机械组织。</span></p><p><span>47、植物可分为：藻类、苔藓、蕨类、种子植物。种子植物又包括：裸子植物和被子植物。</span></p><p><span>48、藻类植物没有根、茎、叶的分化。</span></p><p><span>49、苔藓植物一般都很矮小，通常具有类似茎和叶的分化，但是茎中没有导管，叶中也没有叶脉，根非常简单，称为假根。</span></p><p><span>50、蕨类植物有根、茎、叶的分化，在这些器官中有专门运输物质的通道：输导组织。</span></p><p><span>51、种子的表面有一层种皮，种皮可以保护里面的细嫩的胚。胚是新植物的幼体，由胚芽、胚轴、胚根和子叶组成。有的种子还有胚乳。子叶或胚乳里含有丰富的淀粉等营养物质，这些营养物质能够供给胚发育成幼苗。</span></p><p><span>52、种子萌发需要的条件：适宜的温度、一定的水分和充足的空气。</span></p><p><span>53、当一粒种子萌发时，首先要吸收水分。同时子叶或胚乳中的营养物质逐渐转运给胚根、胚芽、胚轴。随后，胚根发育，突破种皮，形成根；胚轴伸长；胚芽发育成芽，芽进一步发育成茎和叶。</span></p><p><span>54、抽样检测是指从检测对象中抽取少量个体作为样本进行检测。以样本的检测结果来反映总体情况的方法。</span></p><p><span>55、抽样检测要注意：样本大小要合适，要做到随机取样，检测的方法要科学。</span></p><p><span>56、根尖分为：根冠、分生区、伸长区、成熟区四个部分。</span></p><p><span>57、幼根的生长一方面要靠分生区细胞的分裂增加细胞的数量；另一方面要靠伸长区细胞的体积的增大。</span></p><p><span>58、成熟区的表皮细胞一部分向外突出，形成根毛，是根吸收水分和无机盐的主要部位。</span></p><p><span>59、茎包括：幼叶、芽轴、芽原基。幼叶发育成叶，芽轴发育成茎，芽原基发育成芽。</span></p><p><span>60、植物生长需要量最多的是含氮的、含磷的和含钾的无机盐。缺氮时，植株矮小瘦弱，叶片发黄；缺磷时，植株特别矮小，叶片呈暗绿色并出现紫色；缺钾时，植株的茎秆软弱容易倒伏，叶片边缘和尖端呈褐色，并逐渐焦枯。</span></p><p><span>61、植物生长的不同时期，需要无机盐的量是不同的。营养器官生长时期，需要大量含氮的无机盐，而在开花结果时期，则需要更多含磷的无机盐。</span></p><p><span>62、花一般由花柄、花托、萼片、花瓣、雄蕊和雌蕊等组成。花的主要结构是雄蕊和雌蕊，雄蕊花药里面有花粉，雌蕊下部的子房里有胚珠。</span></p><p><span>63、花药成熟后会自然裂开，散放出花粉。花粉从花药中散放而落到雌蕊柱头上的过程，叫传粉。植物传粉的方式一般有两种类型：自花传粉和异花传粉。</span></p><p><span>64、胚珠里面的卵细胞，与来自花粉管中的精子结合，形成受精卵的过程，叫做受精。</span></p><p><span>65、受精完成后，子房发育成果实，子房壁发育成果皮，胚珠发育成种子，胚珠里的受精卵发育成胚。</span></p><p><span>66、植物主要通过根吸收水分。根吸收水分的主要部位是根尖成熟区。成熟区有大量的根毛，这使得根尖具有巨大的吸收面积，因而具有强大的吸水能力。</span></p><p><span>67、茎内的运输结构：导管。它属于输导组织。每一根导管都是由许多长形、管状的细胞所组成的，这些细胞没有细胞质和细胞核，上下细胞间的细胞壁已经消失，形成了一根中空的管道。</span></p><p><span>68、水分从活的植物体表面以水蒸气状态散失到大气中的过程，叫做蒸腾作用。</span></p><p><span>69、蒸腾作用主要是通过叶片进行的。叶片由表皮、叶肉与叶脉三部分组成。表皮是由一层细胞组成的，在表皮上分布有气孔。气孔是植物蒸腾作用的“门户”，也是气体交换的“窗口”。它是由一对半月形的保卫细胞围成的空腔。</span></p><p><span>70、蒸腾作用的影响因素：光照强度、环境温度、空气湿度、空气流动速度等。</span></p><p><span>71、植物通过蒸腾作用，一方面可以拉动水分与无机盐在体内的运输，保证各组织器官对水和无机盐的需要，另一方面在炎热的夏天，通过蒸腾作用能降低叶片表面的温度，避免植物因气温过高而被灼伤。</span></p><p><span>72、光是绿色植物制造有机物不可少的条件，叶绿体既是生产有机物的“车间”，也是将光能转变为化学能的“能量转换器”。</span></p><p><span>73、植物细胞的组成成分除了水和少量的无机盐以外，主要是有机物。</span></p><p><span>74、光合作用实质上是绿色植物通过叶绿体，利用光能，把二氧化碳和水转化成储存能量的有机物，并且释放出氧气的过程。</span></p><p><span>75、光合作用的影响因素：光照强度、光照时间、二氧化碳的浓度、温度、水分等。</span></p><p><span>76、细胞利用氧，将有机物分解成二氧化碳和水，并且将储存在有机物中的能量释放出来，供给生命活动的需要，这个过程叫做呼吸作用。</span></p><p><span> </span></p><p><span> </span></p></div></div>
+</body>
+</html>
